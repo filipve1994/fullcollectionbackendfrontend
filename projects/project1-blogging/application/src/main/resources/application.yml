@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  jpa:
+    open-in-view: false
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/project1-blogging
+    username: dbuser
+    password: dbpass
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      isolation-level-for-create: default
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %highlight(%.-1level) %cyan(%40.40logger{39}): %msg%n%throwable"
+  level:
+    org:
+      hibernate:
+        SQL: debug
+      springframework:
+        security: info
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    csrf:
+      enabled: true
+    enabled: true
+    path: "/swagger-ui.html"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #        include: conditions,env,health,heapdump,info,loggers,metrics,mappings
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

@@ -41,3 +41,6 @@ target/
 **/out-tsc
 **/nbproject/
 **/nb-configuration.xml
+
+# everything from the subfolders
+projects/project1-blogging/db-data
